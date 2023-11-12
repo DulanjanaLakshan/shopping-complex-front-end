@@ -5,3 +5,8 @@
     justify-content: start;
     align-items: center;
 }
+
+.content-container{
+    width: 100%;
+    height: 100%;
+}
