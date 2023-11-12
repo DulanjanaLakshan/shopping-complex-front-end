@@ -6,6 +6,7 @@ import { FinancialTransactionComponent } from './pages/financial-transaction/fin
 import { MaintenanceContractComponent } from './pages/maintenance-contract/maintenance-contract.component';
 import { ShoppingComplexComponent } from './pages/shopping-complex/shopping-complex.component';
 import { StoreComponent } from './pages/store/store.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path:'store',
         component:StoreComponent
+    },
+    {
+        path:'profile',
+        component:ProfileComponent
     },
     {
         path:'**',

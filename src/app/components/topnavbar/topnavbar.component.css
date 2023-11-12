@@ -1,5 +1,33 @@
 .container{
     width: 100%;
-    height: 80px;
-    background-color: aqua;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.card{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-icon{
+    width: 40px;
+    height: 65%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-icon:hover{
+    background-image: linear-gradient(to right top, #05074c, #1e0b58, #320e63, #46116e, #591478);
+    border: none;
+}
+.profile-icon:hover i{
+    color: white;
+}
+.title-panale{
+    margin-left: 50px;
 }

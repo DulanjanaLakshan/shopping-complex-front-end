@@ -28,7 +28,7 @@ export class SidenavbarComponent {
     },
     {
       name: 'Maintenance Contract',
-      icon: 'pi pi-money-bill',
+      icon: 'pi pi-building',
       path: 'maintenance-contract',
     },
     {
@@ -39,7 +39,7 @@ export class SidenavbarComponent {
     {
       name: 'Profile',
       icon: 'pi pi-users',
-      path: 'dashboard',
+      path: 'profile',
     },
   ];
 }
