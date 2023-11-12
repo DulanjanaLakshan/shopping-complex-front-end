@@ -1,0 +1,56 @@
+.sade-container{
+    width: 300px;
+    height: 100vh;
+    background-image: linear-gradient(to right top, #05074c, #1e0b58, #320e63, #46116e, #591478);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.title-pane{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.icon-pane{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-pane i{
+    font-size: 25px;
+}
+
+.menu{
+    width: 100%;
+}
+ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    color: white;
+}
+li{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.LogOut{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
