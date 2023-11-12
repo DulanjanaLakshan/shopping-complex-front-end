@@ -1,0 +1,85 @@
+.router-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../assets/images/river-minimalism-flat-landscape-sunset-artwork-trees.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.login-panale {
+    width: 800px;
+    height: 500px;
+    background: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.login-containner {
+    width: 450px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo-sing {
+    margin: 0;
+    padding: 0;
+}
+
+.log-title {
+    text-align: center;
+}
+
+.login-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-button,
+.input-feld {
+    outline: none;
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.login-button {
+    width: 70%;
+    height: 40px;
+    border-radius: 20px;
+    box-shadow: rgba(38, 0, 255, 0.582) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+.login-button:hover{
+    transition: .2s;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    
+}
+
+.input-feld {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
