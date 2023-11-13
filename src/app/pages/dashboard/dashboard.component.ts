@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidenavbarComponent } from '../../components/sidenavbar/sidenavbar.component';
 import { TopnavbarComponent } from '../../components/topnavbar/topnavbar.component';
+
 
 
 @Component({
@@ -16,5 +17,4 @@ import { TopnavbarComponent } from '../../components/topnavbar/topnavbar.compone
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  
 }
