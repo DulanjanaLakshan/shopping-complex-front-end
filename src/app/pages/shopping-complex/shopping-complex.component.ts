@@ -13,8 +13,8 @@ import { FormsModule } from '@angular/forms';
 interface Data {
   id: Number;
   name: String;
-  Location: String;
-  TotalStores: String;
+  location: String;
+  totalStores: String;
 }
 
 @Component({
@@ -38,9 +38,9 @@ export class ShoppingComplexComponent implements OnInit {
   public getData: Data[] = [];
   public id: Number = 0;
   public name: String = '';
-  public Location: String = '';
-  public TotalStores: String = '';
-
+  public location: String = '';
+  public totalStores: String = '';
+  selectedRowData: any;
 
 
   ngOnInit() {
@@ -58,8 +58,8 @@ export class ShoppingComplexComponent implements OnInit {
     let req = {
       id: this.id,
       name: this.name,
-      Location: this.Location,
-      TotalStores: this.TotalStores,
+      location: this.location,
+      totalStores: this.totalStores,
     }
     try {
       axios.post("https://localhost:8080/api/ShoppingComplex", req);
@@ -67,10 +67,36 @@ export class ShoppingComplexComponent implements OnInit {
     } catch (error) { }
   }
   delete() {
-    throw new Error('Method not implemented.');
+    let req = {
+      id: this.id,
+      name: this.name,
+      location: this.location,
+      totalStores: this.totalStores,
+    }
+    try {
+      axios.post(`https://localhost:8080/api/ShoppingComplex/delete?shoppingComplexId=${req.id}`);
+      this.getShoppingComplex();
+    } catch (error) { }
   }
   update() {
-    throw new Error('Method not implemented.');
+    let req = {
+      id: this.id,
+      name: this.name,
+      location: this.location,
+      totalStores: this.totalStores,
+    }
+    try {
+      axios.put("https://localhost:8080/api/ShoppingComplex", req);
+      this.getShoppingComplex();
+    } catch (error) { }
+  }
+
+  onRowSelect(dataItem: any): void {
+    this.selectedRowData = dataItem;
+    this.id = dataItem.id;
+    this.name = dataItem.name;
+    this.location = dataItem.location;
+    this.totalStores = dataItem.totalStores;
   }
 
 }

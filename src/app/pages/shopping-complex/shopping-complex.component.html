@@ -18,12 +18,12 @@
 
                 <div class="input-feld">
                     <label htmlFor="location">Location</label>
-                    <input pInputText id="location" aria-describedby="location-help"  placeholder="Enter location" [(ngModel)]="Location"/>
+                    <input pInputText id="location" aria-describedby="location-help"  placeholder="Enter location" [(ngModel)]="location"/>
                 </div>
 
                 <div class="input-feld">
                     <label htmlFor="totalStores">TotalStores</label>
-                    <input pInputText type="number" id="totalStores" aria-describedby="totalStores-help"  placeholder="Enter totalStores" [(ngModel)]="TotalStores"/>
+                    <input pInputText type="number" id="totalStores" aria-describedby="totalStores-help"  placeholder="Enter totalStores" [(ngModel)]="totalStores"/>
                 </div>
             </div>
             <div class="button-pane">
@@ -35,18 +35,18 @@
                 <p-table [value]="getData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                     [tableStyle]="{ 'min-width': '50rem' }"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
-                    <ng-template pTemplate="header">
+                    <ng-template pTemplate="header" >
                         <tr>
                             <th style="width:25%">Name</th>
                             <th style="width:25%">Location</th>
                             <th style="width:25%">TotalStores</th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-dataItem>
-                        <tr>
+                    <ng-template pTemplate="body" let-dataItem let-i="rowIndex">
+                        <tr (click)="onRowSelect(dataItem)">
                             <td>{{ dataItem.name }}</td>
-                            <td>{{ dataItem.Location }}</td>
-                            <td>{{ dataItem.TotalStores }}</td>
+                            <td>{{ dataItem.location }}</td>
+                            <td>{{ dataItem.totalStores }}</td>
                         </tr>
                     </ng-template>
                 </p-table>
