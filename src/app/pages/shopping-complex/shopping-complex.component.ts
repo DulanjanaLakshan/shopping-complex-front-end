@@ -54,7 +54,7 @@ export class ShoppingComplexComponent implements OnInit {
     } catch (error) { }
   }
 
-  save() {
+  async save() {
     let req = {
       id: this.id,
       name: this.name,
@@ -62,11 +62,11 @@ export class ShoppingComplexComponent implements OnInit {
       totalStores: this.totalStores,
     }
     try {
-      axios.post("https://localhost:8080/api/ShoppingComplex", req);
+      await axios.post("https://localhost:8080/api/ShoppingComplex", req);
       this.getShoppingComplex();
     } catch (error) { }
   }
-  delete() {
+  async delete() {
     let req = {
       id: this.id,
       name: this.name,
@@ -74,11 +74,11 @@ export class ShoppingComplexComponent implements OnInit {
       totalStores: this.totalStores,
     }
     try {
-      axios.post(`https://localhost:8080/api/ShoppingComplex/delete?shoppingComplexId=${req.id}`);
+      await axios.post(`https://localhost:8080/api/ShoppingComplex/delete?shoppingComplexId=${req.id}`);
       this.getShoppingComplex();
     } catch (error) { }
   }
-  update() {
+  async update() {
     let req = {
       id: this.id,
       name: this.name,
@@ -86,7 +86,7 @@ export class ShoppingComplexComponent implements OnInit {
       totalStores: this.totalStores,
     }
     try {
-      axios.put("https://localhost:8080/api/ShoppingComplex", req);
+      await axios.put("https://localhost:8080/api/ShoppingComplex", req);
       this.getShoppingComplex();
     } catch (error) { }
   }
@@ -98,5 +98,10 @@ export class ShoppingComplexComponent implements OnInit {
     this.location = dataItem.location;
     this.totalStores = dataItem.totalStores;
   }
-
+  clear(){
+    this.id = 0;
+    this.name = '';
+    this.location = '';
+    this.totalStores = '';
+  }
 }

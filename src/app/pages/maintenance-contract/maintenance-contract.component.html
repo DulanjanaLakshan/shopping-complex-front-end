@@ -12,53 +12,47 @@
         <div class="table-container">
             <div class="details">
                 <div class="input-feld">
-                    <label htmlFor="name">Name</label>
-                    <input pInputText id="name" aria-describedby="name-help" placeholder="Enter Full Name"/>
+                    <label htmlFor="agreement">Agreement</label>
+                    <input pInputText id="agreement" placeholder="Enter Agreement" [(ngModel)]="agreement" />
                 </div>
 
                 <div class="input-feld">
-                    <label htmlFor="contact">Contact</label>
-                    <input pInputText id="contact" aria-describedby="contact-help"  placeholder="Enter Contact Number"/>
-                </div>
-
-                <div class="input-feld">
-                    <label htmlFor="email">Email</label>
-                    <input pInputText id="email" aria-describedby="email-help"  placeholder="Enter Email"/>
+                    <label htmlFor="Payment">Payment</label>
+                    <input pInputText id="Payment" type="number" placeholder="Enter Payment Amount" [(ngModel)]="payment" />
                 </div>
                 <div class="input-feld">
-                    <label htmlFor="username">username</label>
-                    <input pInputText id="username" aria-describedby="username-help"  placeholder="Enter Username"/>
-                </div>
-                <div class="input-feld">
-                    <label htmlFor="password">password</label>
-                    <input pInputText type="password" id="password" placeholder="Enter Password"/>
-                </div>
+                    <label htmlFor="Complex">Complex</label>
+                    <select pInputText [(ngModel)]="selectedComplex" (ngModelChange)="onShoppingComplexChange($event)">
+                        <option>--Select--</option>
+                        <option *ngFor="let complexData of getShoppingComplexData" [value]="complexData.id">
+                            {{ complexData.name }}
+                        </option>
+                    </select>
+                </div>    
             </div>
             <div class="button-pane">
-                <button label="Save" class="save btn">Save</button>
-                <button label="Update" class="success btn">Update</button>
-                <button label="Delete" class="danger btn">Delete</button>
+                <button label="Save" class="save btn" (click)="save()">Save</button>
+                <button label="Update" class="success btn" (click)="update()">Update</button>
+                <button label="Delete" class="danger btn" (click)="delete()">Delete</button>
             </div>
             <div class="table">
-                <p-table [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                <p-table [value]="getData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                     [tableStyle]="{ 'min-width': '50rem' }"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [rowsPerPageOptions]="[10, 25, 50]">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="width:25%">Name</th>
-                            <th style="width:25%">Country</th>
-                            <th style="width:25%">Company</th>
-                            <th style="width:25%">Representative</th>
+                            <th style="width:50%">Agreement</th>
+                            <th style="width:25%">Payment</th>
+                            <th style="width:25%">Complex</th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-customer>
-                        <tr>
-                            <td>{{ customer.name }}</td>
-                            <td>{{ customer.country.name }}</td>
-                            <td>{{ customer.company }}</td>
-                            <td>{{ customer.representative.name }}</td>
-                        </tr>
+                    <ng-template pTemplate="body" let-dataItem let-i="rowIndex">
+                        <tr  (click)="onRowSelect(dataItem)">
+                            <td>{{ dataItem.agreement }}</td>
+                            <td>{{ dataItem.payment }}</td>
+                            <td>{{ dataItem.complex }}</td>
+                          </tr>
                     </ng-template>
                 </p-table>
             </div>

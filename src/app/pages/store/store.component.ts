@@ -50,6 +50,7 @@ interface CombinedData extends StoreData {
   styleUrl: './store.component.css'
 })
 export class StoreComponent implements OnInit {
+
   public getShoppingComplexData: ShoppingComplexData[] = [];
 
   public id: Number = 0;
@@ -59,14 +60,25 @@ export class StoreComponent implements OnInit {
   public payment: Number = 0;
   public complexID: Number = 0;
   public complex: String = '';
-  
-  public selectedComplex: Number=0;
+
+  public selectedComplex: Number = 0;
   selectedRowData: any;
+
+  getCategoryData: any[] = [
+    { id: 1, name: 'Beauty' },
+    { id: 2, name: 'Book & Stationery' },
+    { id: 3, name: 'Children’s Products' },
+    { id: 4, name: 'Food & Drink' },
+    { id: 5, name: 'Homeware' },
+    { id: 6, name: 'Jewellery & Watches' },
+    { id: 7, name: 'Men’s & Women’s Shoes' },
+    { id: 8, name: 'Technology' }
+  ];
+  selectedCategory: any;
 
   ngOnInit() {
     this.getShoppingComplex();
     this.getStore();
-
   }
 
   public getData: CombinedData[] = [];
@@ -84,7 +96,7 @@ export class StoreComponent implements OnInit {
         };
       });
 
-    } catch (error) {}
+    } catch (error) { }
   }
   public async getShoppingComplex() {
     try {
@@ -93,7 +105,8 @@ export class StoreComponent implements OnInit {
     } catch (error) { }
   }
 
- async save() {
+
+  async save() {
     let req = {
       id: this.id,
       name: this.name,
@@ -105,12 +118,14 @@ export class StoreComponent implements OnInit {
     try {
       await axios.post("https://localhost:8080/api/Store", req);
       this.getStore();
+      this.clear();
     } catch (error) { }
   }
   async delete() {
     try {
       await axios.delete(`https://localhost:8080/api/Store/${this.id}`);
       this.getStore();
+      this.clear();
     } catch (error) { }
   }
   async update() {
@@ -125,20 +140,34 @@ export class StoreComponent implements OnInit {
     try {
       await axios.put("https://localhost:8080/api/Store", req);
       this.getStore();
+      this.clear();
     } catch (error) { }
   }
 
   onShoppingComplexChange(selectedValue: any) {
-      this.complexID = selectedValue 
+    this.complexID = selectedValue
   }
 
   onRowSelect(dataItem: any) {
     console.log(dataItem);
-    this.id= dataItem.id;
-    this.name= dataItem.name;
-    this.category= dataItem.category;
-    this.leaseAgreement= dataItem.leaseAgreement;
-    this.payment= dataItem.payment;
-    this.complexID= dataItem.complexID;
+    this.id = dataItem.id;
+    this.name = dataItem.name;
+    this.category = dataItem.category;
+    this.leaseAgreement = dataItem.leaseAgreement;
+    this.payment = dataItem.payment;
+    this.complexID = dataItem.complexID;
   }
+  clear() {
+    this.id = 0;
+    this.name = '';
+    this.category = '';
+    this.leaseAgreement = '';
+    this.payment = 0;
+    this.complex = '';
+  }
+
+  onCategoryChange(event: any) {
+    this.category=this.selectedCategory;
+  }
+
 }

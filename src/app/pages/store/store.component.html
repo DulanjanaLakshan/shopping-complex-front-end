@@ -19,8 +19,12 @@
 
                 <div class="input-feld">
                     <label htmlFor="Category">Category</label>
-                    <input pInputText id="Category" aria-describedby="Category-help" placeholder="Enter Category Number"
-                        [(ngModel)]="category" />
+                    <select pInputText [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)">
+                        <option>--Select--</option>
+                        <option *ngFor="let complexData of getCategoryData" [value]="complexData.name">
+                            {{ complexData.name }}
+                        </option>
+                    </select>
                 </div>
 
                 <div class="input-feld">
