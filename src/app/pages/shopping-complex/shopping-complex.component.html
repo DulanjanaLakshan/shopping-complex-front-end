@@ -13,43 +13,40 @@
             <div class="details">
                 <div class="input-feld">
                     <label htmlFor="name">Name</label>
-                    <input pInputText id="name" aria-describedby="name-help" placeholder="Enter Full Name"/>
+                    <input pInputText id="name" aria-describedby="name-help" placeholder="Enter Full Name" [(ngModel)]="name"/>
                 </div>
 
                 <div class="input-feld">
                     <label htmlFor="location">Location</label>
-                    <input pInputText id="location" aria-describedby="location-help"  placeholder="Enter location"/>
+                    <input pInputText id="location" aria-describedby="location-help"  placeholder="Enter location" [(ngModel)]="Location"/>
                 </div>
 
                 <div class="input-feld">
                     <label htmlFor="totalStores">TotalStores</label>
-                    <input pInputText type="number" id="totalStores" aria-describedby="totalStores-help"  placeholder="Enter totalStores"/>
+                    <input pInputText type="number" id="totalStores" aria-describedby="totalStores-help"  placeholder="Enter totalStores" [(ngModel)]="TotalStores"/>
                 </div>
             </div>
             <div class="button-pane">
-                <button label="Save" class="save btn">Save</button>
-                <button label="Update" class="success btn">Update</button>
-                <button label="Delete" class="danger btn">Delete</button>
+                <button label="Save" class="save btn" (click)="save()">Save</button>
+                <button label="Update" class="success btn" (click)="update()">Update</button>
+                <button label="Delete" class="danger btn" (click)="delete()">Delete</button>
             </div>
             <div class="table">
-                <p-table [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                <p-table [value]="getData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                     [tableStyle]="{ 'min-width': '50rem' }"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                    [rowsPerPageOptions]="[10, 25, 50]">
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="width:25%">Name</th>
-                            <th style="width:25%">Country</th>
-                            <th style="width:25%">Company</th>
-                            <th style="width:25%">Representative</th>
+                            <th style="width:25%">Location</th>
+                            <th style="width:25%">TotalStores</th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-customer>
+                    <ng-template pTemplate="body" let-dataItem>
                         <tr>
-                            <td>{{ customer.name }}</td>
-                            <td>{{ customer.country.name }}</td>
-                            <td>{{ customer.company }}</td>
-                            <td>{{ customer.representative.name }}</td>
+                            <td>{{ dataItem.name }}</td>
+                            <td>{{ dataItem.Location }}</td>
+                            <td>{{ dataItem.TotalStores }}</td>
                         </tr>
                     </ng-template>
                 </p-table>
