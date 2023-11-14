@@ -93,7 +93,7 @@ export class StoreComponent implements OnInit {
     } catch (error) { }
   }
 
-  save() {
+ async save() {
     let req = {
       id: this.id,
       name: this.name,
@@ -103,17 +103,17 @@ export class StoreComponent implements OnInit {
       complexID: this.complexID,
     }
     try {
-      axios.post("https://localhost:8080/api/Store", req);
+      await axios.post("https://localhost:8080/api/Store", req);
       this.getStore();
     } catch (error) { }
   }
-  delete() {
+  async delete() {
     try {
-      axios.delete(`https://localhost:8080/api/Store/${this.id}`);
+      await axios.delete(`https://localhost:8080/api/Store/${this.id}`);
       this.getStore();
     } catch (error) { }
   }
-  update() {
+  async update() {
     let req = {
       id: this.id,
       name: this.name,
@@ -123,7 +123,7 @@ export class StoreComponent implements OnInit {
       complexID: this.complexID,
     }
     try {
-      axios.put("https://localhost:8080/api/Store", req);
+      await axios.put("https://localhost:8080/api/Store", req);
       this.getStore();
     } catch (error) { }
   }

@@ -12,56 +12,71 @@
         <div class="table-container">
             <div class="details">
                 <div class="input-feld">
-                    <label htmlFor="name">Amount</label>
-                    <input pInputText id="name" aria-describedby="name-help" placeholder="Enter Full Name"/>
+                    <label htmlFor="amount">Amount</label>
+                    <input pInputText type="number" id="amount" placeholder="Enter Amount" [(ngModel)]="amount" />
                 </div>
 
                 <div class="input-feld">
-                    <label htmlFor="contact">Type</label>
-                    <input pInputText id="contact" aria-describedby="contact-help"  placeholder="Enter Contact Number"/>
+                    <label htmlFor="type">Type (Credit/Debit)</label>
+                    <input pInputText id="type" aria-describedby="type-help" placeholder="Enter Payment Type"
+                        [(ngModel)]="type" />
                 </div>
 
                 <div class="input-feld">
                     <label htmlFor="email">Date</label>
-                    <input pInputText id="email" aria-describedby="email-help"  placeholder="Enter Email"/>
+                    <input pInputText type="date" [(ngModel)]="date" />
                 </div>
                 <div class="input-feld">
-                    <label htmlFor="username">Invoice</label>
-                    <input pInputText id="username" aria-describedby="username-help"  placeholder="Enter Username"/>
+                    <label htmlFor="invoice">Invoice</label>
+                    <input pInputText id="invoice" aria-describedby="invoice-help" placeholder="Enter Invoice Details"
+                        [(ngModel)]="invoice" />
                 </div>
                 <div class="input-feld">
                     <label htmlFor="password">Financial Year</label>
-                    <input pInputText type="password" id="password" placeholder="Enter Password"/>
+                    <select pInputText id="selectYear" [(ngModel)]="selectedYear"
+                        (ngModelChange)="onYearChange($event)">
+                        <option>--Select--</option>
+                        <option *ngFor="let year of years" [value]="year">
+                            {{ year }}
+                        </option>
+                    </select>
                 </div>
                 <div class="input-feld">
-                    <label htmlFor="password">Complex</label>
-                    <input pInputText type="image" id="password" placeholder="Enter Password"/>
+                    <label htmlFor="Complex">Complex</label>
+                    <select pInputText [(ngModel)]="selectedComplex" (ngModelChange)="onShoppingComplexChange($event)">
+                        <option>--Select--</option>
+                        <option *ngFor="let complexData of getShoppingComplexData" [value]="complexData.id">
+                            {{ complexData.name }}
+                        </option>
+                    </select>
                 </div>
             </div>
             <div class="button-pane">
-                <button label="Save" class="save btn">Save</button>
-                <button label="Update" class="success btn">Update</button>
-                <button label="Delete" class="danger btn">Delete</button>
+                <button label="Save" class="save btn" (click)="save()">Save</button>
+                <button label="Update" class="success btn" (click)="update()">Update</button>
+                <button label="Delete" class="danger btn" (click)="delete()">Delete</button>
             </div>
             <div class="table">
-                <p-table [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                <p-table [value]="getData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                     [tableStyle]="{ 'min-width': '50rem' }"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [rowsPerPageOptions]="[10, 25, 50]">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="width:25%">Name</th>
-                            <th style="width:25%">Country</th>
-                            <th style="width:25%">Company</th>
-                            <th style="width:25%">Representative</th>
+                            <th style="width:25%">Amount</th>
+                            <th style="width:25%">Type</th>
+                            <th style="width:25%">Invoice</th>
+                            <th style="width:25%">Financial Year</th>
+                            <th style="width:25%">Complex</th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-customer>
-                        <tr>
-                            <td>{{ customer.name }}</td>
-                            <td>{{ customer.country.name }}</td>
-                            <td>{{ customer.company }}</td>
-                            <td>{{ customer.representative.name }}</td>
+                    <ng-template pTemplate="body" let-dataItem let-i="rowIndex">
+                        <tr (click)="onRowSelect(dataItem)">
+                            <td>{{ dataItem.amount }}</td>
+                            <td>{{ dataItem.type }}</td>
+                            <td>{{ dataItem.invoice }}</td>
+                            <td>{{ dataItem.financialYear }}</td>
+                            <td>{{ dataItem.complex }}</td>
                         </tr>
                     </ng-template>
                 </p-table>

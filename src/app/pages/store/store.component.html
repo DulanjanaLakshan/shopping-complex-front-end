@@ -35,9 +35,9 @@
                 </div>
                 <div class="input-feld">
                     <label htmlFor="Complex">Complex</label>
-                    <select required=true class="select-dropdown" [(ngModel)]="selectedComplex" (ngModelChange)="onShoppingComplexChange($event)">
+                    <select pInputText [(ngModel)]="selectedComplex" (ngModelChange)="onShoppingComplexChange($event)">
                         <option>--Select--</option>
-                        <option *ngFor="let complexData of getShoppingComplexData" [value]="complexData.id" class="dropdown">
+                        <option *ngFor="let complexData of getShoppingComplexData" [value]="complexData.id">
                             {{ complexData.name }}
                         </option>
                     </select>
