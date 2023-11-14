@@ -72,3 +72,12 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+.select-dropdown{
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+}
+option{
+    margin: 5px;
+}
